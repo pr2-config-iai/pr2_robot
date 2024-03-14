@@ -11,6 +11,9 @@
   <!-- Arms -->
   <rosparam command="load" file="$(find pr2_controller_configuration)/pr2_arm_controllers.yaml" />
 
+  <!-- vel group Arms -->
+  <rosparam command="load" file="$(find pr2_controller_configuration)/pr2_joint_velocity_controllers.yaml" />
+
   <!-- Gripper -->
   <rosparam command="load" file="$(find pr2_controller_configuration)/pr2_gripper_controllers.yaml" />
 

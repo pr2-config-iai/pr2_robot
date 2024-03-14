@@ -114,3 +114,25 @@ torso_lift_velocity_controller:
 
 
 
+head_pan_velocity_controller:
+  type: robot_mechanism_controllers/JointVelocityController
+  joint: head_pan_joint
+  pid: &head_pan_velocity_gains
+    p: 2.0
+    d: 0.0
+    i: 0.5
+    i_clamp: 12.5
+    i_clamp_max: 12.5
+    i_clamp_min: -12.5
+
+head_tilt_velocity_controller:
+  type: robot_mechanism_controllers/JointVelocityController
+  joint: head_tilt_joint
+  pid: &head_tilt_velocity_gains
+    p: 1.0
+    d: 0.0
+    i: 0.0
+    i_clamp: 12.5
+    i_clamp_max: 12.5
+    i_clamp_min: -12.5
+
