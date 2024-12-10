@@ -1,24 +1,33 @@
 shoulder_pan_gains: &shoulder_pan_velocity_gains
-    p: 18.0
-    i: 4.67
-    d: 0.0
-    i_clamp: 100.0
-    i_clamp_max: 100.0
-    i_clamp_min: -100.0
-    feed_forward: 0
-
-shoulder_lift_gains: &shoulder_lift_velocity_gains
-    p: 10.0
-    i: 5.67
+    p: 5.0
+    i: 0.0
     d: 0.0
     i_clamp: 5.0
     i_clamp_max: 5.0
     i_clamp_min: -5.0
-    feed_forward: 320.0
+    feed_forward: 0
     antiwindup: true
     pos:
-      p: 320.0
-      i: 100.0
+      p: 100.0
+      i: 0.0
+      d: 0.0
+      i_clamp: 1.0
+      i_clamp_max: 1.0
+      i_clamp_min: -1.0
+      antiwindup: true
+
+shoulder_lift_gains: &shoulder_lift_velocity_gains
+    p: 5.0
+    i: 0.0
+    d: 0.0
+    i_clamp: 5.0
+    i_clamp_max: 5.0
+    i_clamp_min: -5.0
+    feed_forward: 0.0
+    antiwindup: true
+    pos:
+      p: 300.0
+      i: 0.0
       d: 0.0
       i_clamp: 1.0
       i_clamp_max: 1.0
@@ -26,48 +35,93 @@ shoulder_lift_gains: &shoulder_lift_velocity_gains
       antiwindup: true
 
 upper_arm_roll_gains: &upper_arm_roll_velocity_gains
-    p: 6.0
-    i: 42.9
-    d: 0
-    i_clamp: 100.0
-    i_clamp_max: 100.0
-    i_clamp_min: -100.0
+    p: 1.0
+    i: 0.0
+    d: 0.0
+    i_clamp: 5.0
+    i_clamp_max: 5.0
+    i_clamp_min: -5.0
     feed_forward: 0
+    antiwindup: true
+    pos:
+      p: 75.0
+      i: 10.0
+      d: 0.0
+      i_clamp: 1.0
+      i_clamp_max: 1.0
+      i_clamp_min: -1.0
+      antiwindup: true
 
 elbow_flex_gains: &elbow_flex_velocity_gains
     p: 4.0
-    i: 20.0
+    i: 0.0
     d: 0
-    i_clamp: 100.0
-    i_clamp_max: 100.0
-    i_clamp_min: -100.0
+    i_clamp: 5.0
+    i_clamp_max: 5.0
+    i_clamp_min: -5.0
     feed_forward: 0
+    antiwindup: true
+    pos:
+      p: 100.0
+      i: 0.0
+      d: 0.0
+      i_clamp: 1.0
+      i_clamp_max: 1.0
+      i_clamp_min: -1.0
+      antiwindup: true
 
 forearm_roll_gains: &forearm_roll_velocity_gains
-    p: 6.0
-    i: 15.0
+    p: 2.0
+    i: 0.0
     d: 0
-    i_clamp: 100.0
-    i_clamp_max: 100.0
-    i_clamp_min: -100.0
+    i_clamp: 5.0
+    i_clamp_max: 5.0
+    i_clamp_min: -5.0
     feed_forward: 0
+    antiwindup: true
+    pos:
+      p: 75.0
+      i: 0.0
+      d: 0.0
+      i_clamp: 1.0
+      i_clamp_max: 1.0
+      i_clamp_min: -1.0
+      antiwindup: true
 
 wrist_flex_gains: &wrist_flex_velocity_gains
-      p: 4.0
-      i: 25.0
-      d: 0
-      i_clamp: 100.0
-      i_clamp_max: 100.0
-      i_clamp_min: -100.0
-      feed_forward: 0
+    p: 2.0
+    i: 0.0
+    d: 0
+    i_clamp: 5.0
+    i_clamp_max: 5.0
+    i_clamp_min: -5.0
+    feed_forward: 0
+    antiwindup: true
+    pos:
+      p: 100.0
+      i: 0.0
+      d: 0.0
+      i_clamp: 1.0
+      i_clamp_max: 1.0
+      i_clamp_min: -1.0
+      antiwindup: true
 
 wrist_roll_gains: &wrist_roll_velocity_gains
-      p: 4.0
-      i: 25.0
-      d: 0
-      i_clamp: 100.0
-      i_clamp_max: 100.0
-      i_clamp_min: -100.0
+    p: 2.0
+    i: 0.0
+    d: 0
+    i_clamp: 5.0
+    i_clamp_max: 5.0
+    i_clamp_min: -5.0
+    antiwindup: true
+    pos:
+      p: 100.0
+      i: 0.0
+      d: 0.0
+      i_clamp: 1.0
+      i_clamp_max: 1.0
+      i_clamp_min: -1.0
+      antiwindup: true
 
 l_arm_joint_group_velocity_controller:
   type: "robot_mechanism_controllers/JointGroupVelocityController"
@@ -117,3 +171,60 @@ torso_lift_velocity_controller:
     i_clamp: 1200.0
     i_clamp_max: 1200.0
     i_clamp_min: -1200.0
+
+spine_velocity_controller:
+  type: "robot_mechanism_controllers/JointGroupVelocityController"
+  joints:
+    - torso_lift_joint
+    - head_pan_joint
+    - head_tilt_joint
+  gains:
+    torso_lift_joint:
+      p: 4000000.0
+      i: 1000.0
+      d: 0
+      i_clamp: 1200.0
+      i_clamp_max: 1200.0
+      i_clamp_min: -1200.0
+      antiwindup: true
+      pos:
+        p: 0.0
+        i: 0.0
+        d: 0.0
+        i_clamp: 1.0
+        i_clamp_max: 1.0
+        i_clamp_min: -1.0
+        antiwindup: true
+    head_pan_joint: 
+      p: 0.5
+      i: 0.0
+      d: 0
+      i_clamp: 5.0
+      i_clamp_max: 5.0
+      i_clamp_min: -5.0
+      antiwindup: true
+      pos:
+        p: 75.0
+        i: 50.0
+        d: 0.0
+        i_clamp: 1.0
+        i_clamp_max: 1.0
+        i_clamp_min: -1.0
+        antiwindup: true
+    head_tilt_joint:
+      p: 1.0
+      i: 0.0
+      d: 0
+      i_clamp: 5.0
+      i_clamp_max: 5.0
+      i_clamp_min: -5.0
+      antiwindup: true
+      pos:
+        p: 100.0
+        i: 100.0
+        d: 0.0
+        i_clamp: 1.0
+        i_clamp_max: 1.0
+        i_clamp_min: -1.0
+        antiwindup: true
+

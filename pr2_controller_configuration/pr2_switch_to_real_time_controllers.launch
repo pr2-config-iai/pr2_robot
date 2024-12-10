@@ -11,6 +11,6 @@
 
   <node name="spawn_vel_group_controllers"
         pkg="pr2_controller_manager" type="spawner"
-        args="l_arm_joint_group_velocity_controller r_arm_joint_group_velocity_controller torso_lift_velocity_controller head_pan_position_controller head_tilt_position_controller" />
+        args="l_arm_joint_group_velocity_controller r_arm_joint_group_velocity_controller spine_velocity_controller" />
 
 </launch>
