@@ -1,5 +1,41 @@
 shoulder_pan_gains: &shoulder_pan_velocity_gains
-    p: 5.0
+    p: 10.0
+    i: 0.0
+    d: 0.0
+    i_clamp: 5.0
+    i_clamp_max: 5.0
+    i_clamp_min: -5.0
+    feed_forward: 100
+    antiwindup: true
+    pos:
+      p: 50.0
+      i: 0.0
+      d: 0.0
+      i_clamp: 0.025
+      i_clamp_max: 1.0
+      i_clamp_min: -1.0
+      antiwindup: true
+
+shoulder_lift_gains: &shoulder_lift_velocity_gains
+    p: 8.0
+    i: 0.0
+    d: 0.0
+    i_clamp: 5.0
+    i_clamp_max: 5.0
+    i_clamp_min: -5.0
+    feed_forward: 0.0
+    antiwindup: true
+    pos:
+      p: 200.0
+      i: 0.0
+      d: 2.0
+      i_clamp: 0.025
+      i_clamp_max: 1.0
+      i_clamp_min: -1.0
+      antiwindup: true
+
+upper_arm_roll_gains: &upper_arm_roll_velocity_gains
+    p: 2.0
     i: 0.0
     d: 0.0
     i_clamp: 5.0
@@ -10,44 +46,8 @@ shoulder_pan_gains: &shoulder_pan_velocity_gains
     pos:
       p: 100.0
       i: 0.0
-      d: 0.0
-      i_clamp: 1.0
-      i_clamp_max: 1.0
-      i_clamp_min: -1.0
-      antiwindup: true
-
-shoulder_lift_gains: &shoulder_lift_velocity_gains
-    p: 5.0
-    i: 0.0
-    d: 0.0
-    i_clamp: 5.0
-    i_clamp_max: 5.0
-    i_clamp_min: -5.0
-    feed_forward: 0.0
-    antiwindup: true
-    pos:
-      p: 300.0
-      i: 0.0
-      d: 0.0
-      i_clamp: 1.0
-      i_clamp_max: 1.0
-      i_clamp_min: -1.0
-      antiwindup: true
-
-upper_arm_roll_gains: &upper_arm_roll_velocity_gains
-    p: 1.0
-    i: 0.0
-    d: 0.0
-    i_clamp: 5.0
-    i_clamp_max: 5.0
-    i_clamp_min: -5.0
-    feed_forward: 0
-    antiwindup: true
-    pos:
-      p: 75.0
-      i: 10.0
-      d: 0.0
-      i_clamp: 1.0
+      d: 2.0
+      i_clamp: 0.025
       i_clamp_max: 1.0
       i_clamp_min: -1.0
       antiwindup: true
@@ -62,10 +62,10 @@ elbow_flex_gains: &elbow_flex_velocity_gains
     feed_forward: 0
     antiwindup: true
     pos:
-      p: 100.0
+      p: 0.0
       i: 0.0
-      d: 0.0
-      i_clamp: 1.0
+      d: 1.0
+      i_clamp: 0.025
       i_clamp_max: 1.0
       i_clamp_min: -1.0
       antiwindup: true
@@ -80,10 +80,10 @@ forearm_roll_gains: &forearm_roll_velocity_gains
     feed_forward: 0
     antiwindup: true
     pos:
-      p: 75.0
+      p: 100.0
       i: 0.0
-      d: 0.0
-      i_clamp: 1.0
+      d: 0.7
+      i_clamp: 0.025
       i_clamp_max: 1.0
       i_clamp_min: -1.0
       antiwindup: true
@@ -100,10 +100,10 @@ wrist_flex_gains: &wrist_flex_velocity_gains
     pos:
       p: 100.0
       i: 0.0
-      d: 0.0
-      i_clamp: 1.0
-      i_clamp_max: 1.0
-      i_clamp_min: -1.0
+      d: 1.0
+      i_clamp: 0.025
+      i_clamp_max: 0.5
+      i_clamp_min: -0.5
       antiwindup: true
 
 wrist_roll_gains: &wrist_roll_velocity_gains
@@ -117,8 +117,8 @@ wrist_roll_gains: &wrist_roll_velocity_gains
     pos:
       p: 100.0
       i: 0.0
-      d: 0.0
-      i_clamp: 1.0
+      d: 1.15
+      i_clamp: 0.025
       i_clamp_max: 1.0
       i_clamp_min: -1.0
       antiwindup: true
@@ -196,7 +196,7 @@ spine_velocity_controller:
         i_clamp_min: -1.0
         antiwindup: true
     head_pan_joint: 
-      p: 0.5
+      p: 1.0
       i: 0.0
       d: 0
       i_clamp: 5.0
@@ -204,10 +204,10 @@ spine_velocity_controller:
       i_clamp_min: -5.0
       antiwindup: true
       pos:
-        p: 75.0
-        i: 50.0
-        d: 0.0
-        i_clamp: 1.0
+        p: 12.0
+        i: 12.0
+        d: 0.275
+        i_clamp: 0.015
         i_clamp_max: 1.0
         i_clamp_min: -1.0
         antiwindup: true
@@ -223,7 +223,7 @@ spine_velocity_controller:
         p: 100.0
         i: 100.0
         d: 0.0
-        i_clamp: 1.0
+        i_clamp: 0.025
         i_clamp_max: 1.0
         i_clamp_min: -1.0
         antiwindup: true
