@@ -62,7 +62,7 @@ elbow_flex_gains: &elbow_flex_velocity_gains
     feed_forward: 0
     antiwindup: true
     pos:
-      p: 0.0
+      p: 100.0
       i: 0.0
       d: 1.0
       i_clamp: 0.025
