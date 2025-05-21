@@ -8,8 +8,11 @@
         <param name="port2" type="string" value="/etc/ros/sensors/battery2" />
         <param name="port3" type="string" value="/etc/ros/sensors/battery3" />
         <param name="debug_level" type="int" value="0" />
-      </node> 
-  
+      </node>
+      
+      <!-- Sound, speaker connected to C2 -->
+      <node pkg="sound_play" type="soundplay_node.py" machine="c2" name="sound_play" /> 
+      
       <!-- Base Laser -->
       <node machine="c2" pkg="urg_node" type="urg_node" name="base_hokuyo_node" args="scan:=base_scan">
         <param name="serial_port" type="string" value="/etc/ros/sensors/base_hokuyo" />
