@@ -1,0 +1,16 @@
+<launch>
+  <!-- imu -->
+  <node pkg="microstrain_3dmgx2_imu" type="imu_node" name="imu_node" output="screen">
+    <remap from="imu" to="torso_lift_imu" />
+    <param name="time_offset" value="-0.040" />
+    <param name="port"  type="string" value="/etc/ros/sensors/imu" />
+    <param name="autostart" type="bool" value="true" />
+    <param name="frame_id"  type="string" value="imu_link" />
+    <param name="autocalibrate" type="bool" value="false" />
+    <param name="assume_calibrated" type="bool" value="true" />
+    <param name="orientation_stdev" type="double" value="0.00017" />
+    <param name="max_drift_rate" type="double" value="0.00157" />
+  </node>
+  <node pkg="imu_monitor" type="imu_monitor.py" name="imu_monitor" />
+
+</launch>
