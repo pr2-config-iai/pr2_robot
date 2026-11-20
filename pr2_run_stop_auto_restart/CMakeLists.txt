@@ -1,23 +1,24 @@
-cmake_minimum_required(VERSION 2.8.12)
-if(POLICY CMP0048)
-  cmake_policy(SET CMP0048 NEW)
-endif()
+cmake_minimum_required(VERSION 3.16)
 project(pr2_run_stop_auto_restart)
 
-# Load catkin and all dependencies required for this package
-find_package(catkin REQUIRED COMPONENTS 
-   roscpp 
-   pr2_msgs 
-   pr2_power_board 
-   std_srvs)
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra)
+endif()
 
-include_directories(${catkin_INCLUDE_DIRS})
-
-catkin_package()
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(pr2_msgs REQUIRED)
+find_package(pr2_power_board REQUIRED)
+find_package(std_srvs REQUIRED)
 
 add_executable(run_stop_auto_restart src/run_stop_auto_restart.cpp)
-target_link_libraries(run_stop_auto_restart ${catkin_LIBRARIES})
-add_dependencies(run_stop_auto_restart ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+target_link_libraries(run_stop_auto_restart
+  rclcpp::rclcpp
+  ${pr2_msgs_TARGETS}
+  ${pr2_power_board_TARGETS}
+  ${std_srvs_TARGETS})
 
 install(TARGETS run_stop_auto_restart
-   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+  DESTINATION lib/${PROJECT_NAME})
+
+ament_package()

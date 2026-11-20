@@ -2,6 +2,13 @@
 Changelog for package pr2_run_stop_auto_restart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.0 (unreleased)
+------------------
+* Port to ROS 2 (Jazzy), ament_cmake. Same behaviour and names (``power_board/state``,
+  ``power_board/control``, ``pr2_ethercat/reset_motors``). The restart sequence (waits for the
+  services, switches the breakers, sleeps 2 s, resets the motors) runs in a worker thread instead
+  of the subscription callback, so the executor can deliver the service responses.
+
 1.6.32 (2021-05-26)
 -------------------
 
